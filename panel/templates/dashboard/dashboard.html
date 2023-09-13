@@ -1,0 +1,113 @@
+{% extends '../index_master.html' %}
+
+{% block head %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+{% endblock%}
+
+{% block content %}
+<div class="right_col" role="main">
+    <div class="row">
+      <div class="col-6">
+        <h1>Estadísicas de Ingresos y Salidas</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 d-flex d-grid gap1" style="border-style: solid;">
+        <div class = "container">
+          <div class="d-flex mb-1" style = "justify-content: center;">
+            <h2>Filtro por Área</h2>
+          </div>  
+          <div class="d-flex mb-1 "  >
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">Operaciones</button>
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">Mantto</button>
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">Oficina Técnica</button>
+          </div>
+          <div class="d-flex mb-1"> 
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">ADMINISTRACIÓN</button>
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">SERVICIO</button>
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">SSMA</button>
+          </div>
+        </div> 
+      </div>
+
+      <div class="col-4 d-flex d-grid gap1 " style="border-style: solid;">
+        <div class = "container">
+          <div class="d-flex mb-1" style = "justify-content: center;">
+            <h2>Filtro por Servicio</h2>
+          </div>  
+          <div class="d-flex mb-1" >
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">SHOTCRETE</button>
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">AVANCE</button>
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">ORE SORTING</button>
+          </div>
+          <div class="d-flex mb-1"> 
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">TRANSPORTE</button>
+            <button type="button" class="btn btn-secondary flex-fill me-1" style="font-size: 1vw;">SERVICIOS</button>
+            
+          </div>
+        </div>     
+      </div>
+
+      <div class="col-3 d-flex d-grid gap1 " style="border-style: solid;">
+        <div class="d-flex mb-1" >
+          <div class="div-dropdown" style="height:25px;">
+            <select id="selected_variable" name="selected_variable"></select>
+            <div id="results_selection"></div>
+          </div>
+        </div>
+        <div class="d-flex mb-1"> 
+          <div class="div-dropdown" style="height:25px;">
+            <select id="selected_variable" name="selected_variable"></select>
+            <div id="results_selection"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 d-flex d-grid gap1 " style="border-style: solid;">
+        <div class="d-flex mb-1"> 
+          <div class="div-dropdown" style="height:25px;">
+            <select id="selected_variable" name="selected_variable"></select>
+            <div id="results_selection"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class = "col-6" style = "border-style: solid;">
+        <div class="d-flex mb-1" style = "justify-content: center;">
+          <h2>Resumen de Ingresos y Salidas por turno</h2>
+        </div> 
+
+        <div id="myChartBar" style="width:100%; max-width:600px; height:200px">
+        </div>
+      </div>
+    </div>
+    
+    <div class="BoxIt">
+        <div class="div-dropdown" style="height:25px;">
+            <select id="selected_variable" name="selected_variable"></select>
+            <div id="results_selection"></div>
+        </div>
+        <h2>sel_var is: {{ sel_var }}</h2>
+        <h2>variable_data_Te: {{ variable_data_Te }}</h2>
+        <h2 id="values">{{ values }}</h2>
+    </div>
+    <div class="row">
+      <div id="myChartColumn1" style="width:100%; max-width:600px; height:200px;border-style: solid;"></div>
+      <div id="myChartColumn2" style="width:100%; max-width:600px; height:200px;border-style: solid;"></div>
+    </div>
+</div>
+
+
+
+{% endblock%}
+
+{% block scripts %}
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+{%load static%}
+<script src="{%static 'dashboard.js'%}"></script>
+{% endblock %}
